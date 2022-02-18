@@ -1,23 +1,22 @@
 import "./menu.scss";
 export default function Menu({ menuOpen, setMenuOpen }) {
+  const MENU_OPTS = [
+    { text: "Home", link: "#intro" },
+    { text: "Portfolio", link: "#portfolio" },
+    { text: "Works", link: "#works" },
+    { text: "Testimonials", link: "#testimonials" },
+    { text: "Contact", link: "#contact" },
+  ];
   return (
     <div className={"menu " + (menuOpen && "active")}>
       <ul className="">
-        <li onClick={() => setMenuOpen(false)}>
-          <a href="#intro">Home</a>
-        </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <a href="#portfolio">Portfolio</a>
-        </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <a href="#works">Works</a>
-        </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <a href="#testimonials">Testimonials</a>
-        </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <a href="#contact">Contact</a>
-        </li>
+        {MENU_OPTS.map((opt, i) => {
+          return (
+            <li onClick={() => setMenuOpen(false)}>
+              <a href={opt.link}>{opt.text}</a>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
